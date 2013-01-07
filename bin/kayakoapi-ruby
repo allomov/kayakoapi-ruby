@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+require 'kayakoapi-ruby'
+require 'optparse'
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: kayakoapi -url URL_BASE [options]"
+
+  opts.on("-g", "--show-gui", "Run in GUI mode.") do |gui|
+    options[:gui] = gui
+  end
+
+  opts.on("-u", "--url", "Base URL for your API Call") do |url|
+    options[:url] = url
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+
+  opts.on_tail("--version", "Show version") do
+    puts "Kayako API URL Generator: v#{Kayakoapi::VERSION}"
+    exit
+  end
+end.parse!
+
+if options[:gui]
+  puts "GUI coming soon!"
+  exit
+else
+  app = Kayakoapi::APISig.new(options[:url_base])
+  app.run
+end
