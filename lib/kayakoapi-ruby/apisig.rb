@@ -2,6 +2,7 @@ module Kayakoapi
   # Required Libraries
   require 'openssl'
   require 'base64'
+  require 'urlgenerator'
 
   class APISig
     def initialize(key, secret)

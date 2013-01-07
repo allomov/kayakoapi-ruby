@@ -13,7 +13,11 @@ module Kayakoapi
 
     def run
       @api_sig.new_signature.each { |key, value| @url_builder.append_to_url(key, value) }
-      puts "Generated URL: #{@url_builder.full_url}"
+      begin
+        puts "Generated URL: #{@url_builder.full_url}"
+      rescue => e
+        puts "URL Could not be generated, no parameters were appended to the URL."
+      end
     end
   end
 end

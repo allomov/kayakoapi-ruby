@@ -20,10 +20,6 @@ OptionParser.new do |opts|
     options[:secret] = secret || ''
   end
 
-  opts.on("-g", "--gui", "Run in GUI mode.") do |gui|
-    options[:gui] = gui
-  end
-
   opts.on_tail("-h", "--help", "Show this message") do
     puts opts
     exit
@@ -35,10 +31,12 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-if (options[:gui])
-  puts "GUI coming soon!"
-  exit
-else
-  app = Kayakoapi::App.new(options[:url_base], options[:app_key], options[:secret])
+[:url, :app_key, :secret].each do |setting|
+  if options[setting] == nil
+    print  "Please enter a value for #{setting}: "
+    options[setting] = gets
+  end
+
+  app = Kayakoapi::App.new(options[:url], options[:app_key], options[:secret])
   app.run
 end

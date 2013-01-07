@@ -1,6 +1,10 @@
 # Kayakoapi::Ruby
 
-Basic Shoes app to generate Kayako API URLS.
+Basic ruby app to generate Kayako API URLS.
+
+Currently prints the generated URL to the console.
+
+Minutely tested.
 
 ## Installation
 
@@ -18,11 +22,18 @@ Or install it yourself as:
 
 ## Usage
 
-    $ kayakoapi-ruby - u url-base
+    $ kayakoapi-ruby - u url-base -k app-key -s app-secret
+
+salt is randomly generated.
 
 e.g.
 
     $ kayakoapi-ruby -u http://my-api-url/
+
+Output:
+
+    $ Generated URL: http://my-api-url/api/index.php?/Controller/Action&signature=%57%56%4A%65%4D%65+%31%4A%6B%34%33%4E%32%6C%56%6E/%70%4D%6D%33%5A%57%79%31%4F%51%31%50%62%34%76%67%74%47%41%4E%67%4A%42%35%45=&salt=5870184239&apikey=1234567890
+
 
 ## Contributing
 

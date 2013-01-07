@@ -10,10 +10,12 @@ Gem::Specification.new do |gem|
   gem.email         = ["bulletraven@gmail.com"]
   gem.description   = %q{Ruby Shoes app to generate Kayako API URLs.}
   gem.summary       = %q{Ruby Shoes app to generate Kayako Resolve API URLs.}
-  gem.homepage      = "http://petermellett.co.uk/projects/kayakoapi"
+  gem.homepage      = "https://github.com/wadtech/kayakoapi-ruby"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+
+  gem.add_development_dependency "rspec", ["~> 2.12"]
 end

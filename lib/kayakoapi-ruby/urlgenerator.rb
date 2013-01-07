@@ -13,10 +13,14 @@ module Kayakoapi
 
     def full_url
       current_url = @url_root
-      @params.each do |key, value|
-        current_url += "&#{key}=#{value}"
+      if @params.empty?
+        raise NoURLParametersException.new(msg: "Params hash is empty while attempting to build a URL.")
+      else
+        @params.each do |key, value|
+          current_url += "&#{key}=#{value}"
+        end
+        return current_url
       end
-      return current_url
     end
 
     def first_param?
