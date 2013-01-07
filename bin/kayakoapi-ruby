@@ -8,12 +8,12 @@ options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: kayakoapi -url URL_BASE [options]"
 
-  opts.on("-g", "--show-gui", "Run in GUI mode.") do |gui|
-    options[:gui] = gui
+  opts.on("-u", "--url [URL]", "Base URL for your API Call") do |url|
+    options[:url] = url || ''
   end
 
-  opts.on("-u", "--url", "Base URL for your API Call") do |url|
-    options[:url] = url
+  opts.on("-g", "--gui", "Run in GUI mode.") do |gui|
+    options[:gui] = true
   end
 
   opts.on_tail("-h", "--help", "Show this message") do
@@ -27,7 +27,7 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-if options[:gui]
+if (options[:gui])
   puts "GUI coming soon!"
   exit
 else
