@@ -18,11 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-    $ kayakoapi-ruby url-base [--gui]
+    $ kayakoapi-ruby - u url-base
 
 e.g.
 
-    $ kayakoapi-ruby http://my-api-url/ --gui
+    $ kayakoapi-ruby -u http://my-api-url/
 
 ## Contributing
 

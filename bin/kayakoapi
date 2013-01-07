@@ -6,14 +6,22 @@ require 'optparse'
 options = {}
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: kayakoapi -url URL_BASE [options]"
+  opts.banner = "Usage: kayakoapi-ruby [options]"
 
   opts.on("-u", "--url [URL]", "Base URL for your API Call") do |url|
     options[:url] = url || ''
   end
 
+  opts.on("-k", "--key [KEY]", "API Key from your Kayako Helpdesk") do |key|
+    options[:app_key] = key || ''
+  end
+
+  opts.on("-s", "--secret [SECRET]", "API Secret from your Kayako Helpdesk") do |secret|
+    options[:secret] = secret || ''
+  end
+
   opts.on("-g", "--gui", "Run in GUI mode.") do |gui|
-    options[:gui] = true
+    options[:gui] = gui
   end
 
   opts.on_tail("-h", "--help", "Show this message") do
@@ -31,6 +39,6 @@ if (options[:gui])
   puts "GUI coming soon!"
   exit
 else
-  app = Kayakoapi::APISig.new(options[:url_base])
+  app = Kayakoapi::App.new(options[:url_base], options[:app_key], options[:secret])
   app.run
 end
