@@ -1,6 +1,5 @@
 require 'spec_helper'
 require "kayakoapi-ruby/apisig"
-require "kayakoapi-ruby/urlgenerator"
 
 describe "APISig" do
   before :each do

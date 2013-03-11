@@ -1,10 +1,6 @@
-# Kayakoapi::Ruby
+# Kayakoapi-Ruby
 
-Basic ruby app to generate Kayako API URLS.
-
-Currently prints the generated URL to the console.
-
-Minutely tested.
+Basic ruby gem to generate API signatures compatible with the [Kayako REST API](http://wiki.kayako.com/display/DEV/Kayako+REST+API)
 
 ## Installation
 
@@ -12,9 +8,9 @@ Add this line to your application's Gemfile:
 
     gem 'kayakoapi-ruby'
 
-And then execute:
+And then:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
@@ -22,18 +18,21 @@ Or install it yourself as:
 
 ## Usage
 
-    $ kayakoapi-ruby - u url-base -k app-key -s app-secret
+    require 'kayako-ruby'
 
-salt is randomly generated.
+    generator = KayakoApi.new('http://my.kayako.helpdesk/api', 'my-application-key', 'my-application-secret')
 
-e.g.
+    generator.url
+    #=> "http://my.kayako.helpdesk/api/index.php?signature=%57%56%4A%65%4D%65+%31%4A%6B%34%33%4E%32%6C%56%6E/%70%4D%6D%33%5A%57%79%31%4F%51%31%50%62%34%76%67%74%47%41%4E%67%4A%42%35%45=&salt=5870184239&apikey=1234567890"
 
-    $ kayakoapi-ruby -u http://my-api-url/
+    generator.signature
+    #=> {:signature=>"%61%33%4F%6F%59%39%44%79%71%31%4F%6D%4D%6F%74%7A%47%44%4A%76%37%30%4F%6C%6F%48%74/%79%6D%6F%4C%70%43%77%57%52%57%41%6F%52%45%6B=", :salt=>"5265651781", :apikey=>"my-application-key"}
 
-Output:
+nb. you will need to add your own controller and action to the url.
 
-    $ Generated URL: http://my-api-url/api/index.php?/Controller/Action&signature=%57%56%4A%65%4D%65+%31%4A%6B%34%33%4E%32%6C%56%6E/%70%4D%6D%33%5A%57%79%31%4F%51%31%50%62%34%76%67%74%47%41%4E%67%4A%42%35%45=&salt=5870184239&apikey=1234567890
+If an error occurs, KayakoApi#url will return false.
 
+The salt is randomly generated, but included in the querystring (as per the [Kayako REST API](http://wiki.kayako.com/display/DEV/Kayako+REST+API).
 
 ## Contributing
 

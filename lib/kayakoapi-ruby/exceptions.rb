@@ -1,5 +1,5 @@
 module Kayakoapi
-  class NoURLParametersException < Exception
+  class NoURLParameters < Exception
     def initialize(data)
       @data = data
     end
