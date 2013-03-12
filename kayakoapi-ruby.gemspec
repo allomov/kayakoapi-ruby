@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Kayakoapi::VERSION
   gem.authors       = ["Peter Mellett"]
   gem.email         = ["bulletraven@gmail.com"]
-  gem.description   = %q{Ruby Shoes app to generate Kayako API URLs.}
-  gem.summary       = %q{Ruby Shoes app to generate Kayako Resolve API URLs.}
+  gem.description   = %q{Library to generate Kayako Resolve API Querystrings.}
+  gem.summary       = %q{Library to generate Kayako Resolve API Querystrings.}
   gem.homepage      = "https://github.com/wadtech/kayakoapi-ruby"
 
   gem.files         = `git ls-files`.split($/)
