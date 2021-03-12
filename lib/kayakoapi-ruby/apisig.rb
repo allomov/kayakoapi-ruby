@@ -24,8 +24,7 @@ module Kayakoapi
       salt = self.get_salt
       hash = self.hash(@secret_key, salt)
       b64hash = self.b64encode hash
-      last_hash = URLGenerator::urlncode b64hash.strip
-      return { signature: last_hash, salt: salt, apikey: @api_key }
+      return { signature: b64hash.strip, salt: salt, apikey: @api_key }
     end
   end
 end
